@@ -1,0 +1,20 @@
+# Base de datos local para desarrollo. Las credenciales salen de .env (ver .env.example).
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: causia
+      MYSQL_USER: ${CAUSIA_DB_USER:-causia}
+      MYSQL_PASSWORD: ${CAUSIA_DB_PASSWORD:?definí CAUSIA_DB_PASSWORD en .env}
+      MYSQL_ROOT_PASSWORD: ${CAUSIA_DB_ROOT_PASSWORD:?definí CAUSIA_DB_ROOT_PASSWORD en .env}
+    ports:
+      - "127.0.0.1:3306:3306"
+    volumes:
+      - causia-mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+volumes:
+  causia-mysql:

@@ -8,3 +8,6 @@ dist/
 *.pdf
 *.ogg
 *.mp4
+target/
+.idea/
+*.iml
