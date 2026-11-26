@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+.env.*
+*.xlsx
+*.xls
+*.docx
+*.pdf
+*.ogg
+*.mp4
